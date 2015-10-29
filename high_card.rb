@@ -12,23 +12,16 @@ suits.each do |suit|
   end
 end
 
-is_running = true
+input = ""
 
-while is_running
-  puts "Enter a player name, or type 'play', or 'quit'."
-  input = gets.to_s
-
-  if input == "play"
-    deck.shuffle
-    players.each do |player|
-      puts "#{player} played #{deck[player][0]} of #{deck[player][1]}!"
-    end
-
-  elsif input == "quit"
-    is_running = false
-  else
+  until input === "play"
+    puts "Enter a player name, or type 'play'."
+    input = gets.chomp
     players = players.push(input)
     puts "#{input} has joined the game."
   end
 
-end
+  deck.shuffle
+  players.each do |player|
+    puts "#{player} played #{deck[player][0]} of #{deck[player][1]}!"
+  end
